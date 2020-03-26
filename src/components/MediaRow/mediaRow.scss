@@ -1,0 +1,22 @@
+.Media-row-with-title {
+    height: 20%;
+    margin-left: 4.6rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 1rem;
+
+    h2 {
+        text-align: left;
+    }
+
+    .Media-row {
+        white-space: nowrap;
+        .Media {
+            &:not(first-child) {
+                margin-left: 0.1rem;
+                margin-right: 0.1rem;
+            }
+        }
+    }
+}

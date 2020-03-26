@@ -1,0 +1,22 @@
+.Cover-screen {
+    text-align: center;
+    background-size: cover;
+    background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.1) 30%
+        ),
+        url(https://image.tmdb.org/t/p/w1280/stmYfCUGd8Iy6kAMBr6AmWqx8Bq.jpg);
+    height: 102vh;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    .Title-info-container {
+        width: 30%;
+        height: 40%;
+        margin-left: 4.47rem;
+        margin-top: 13rem;
+    }
+}
