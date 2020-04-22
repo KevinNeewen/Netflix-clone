@@ -1,0 +1,7 @@
+export const TRENDING_MOVIES = 'Trending Movies'
+export const POPULAR_MOVIES = 'Popular Movies'
+export const TOP_RATED_MOVIES = 'Top Rated Movies'
+export const POPULAR_TV_SHOWS = 'Popular TV Shows'
+export const TRENDING_TV_MOVIES = 'Trending TV Shows'
+export const COMEDY_MOVIES = 'Comedies'
+export const ROMANCE_MOVIES = 'Romance Movies'

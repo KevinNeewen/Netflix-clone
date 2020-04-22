@@ -1,10 +1,10 @@
 header {
     background-color: transparent;
     width: 100%;
-    height: 70px;
-    padding: 0 47px;
+    height: 5rem;
+    padding: 0 3rem;
     display: flex !important;
-    font-size: 1.2rem;
+    z-index: 1;
     background-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.7) 10%,
@@ -12,16 +12,20 @@ header {
     );
 
     .nav {
+        // padding-top: 1rem;
         .nav-item:first-child {
-            margin-right: 25px;
+            margin-right: 1.5rem;
         }
 
         align-items: center;
+
         .nav-item {
             transition: color 0.3s;
             .nav-link {
+                padding-left: 0.7rem;
+                padding-right: 0.7rem;
+                font-size: 1rem;
                 color: #fff;
-
                 &:hover {
                     color: #e5e5e5;
                 }
@@ -29,7 +33,7 @@ header {
         }
 
         img {
-            height: 24px;
+            height: 1.8rem;
         }
     }
 }

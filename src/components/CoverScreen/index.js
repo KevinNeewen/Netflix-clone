@@ -5,14 +5,17 @@ import PropTypes from 'prop-types'
 import './coverScreen.scss'
 
 CoverScreen.propTypes = {
-    myListMovies: PropTypes.array,
+    mediaRow: PropTypes.any,
 }
 
-function CoverScreen(props) {
+function CoverScreen({ mediaRow }) {
     return (
         <div className="Cover-screen">
             <TitleInfoContainer />
-            <MediaRow myListMovies={props.myListMovies} />
+            <MediaRow
+                title={mediaRow.categoryTitle}
+                medias={mediaRow.mediasPerCategory}
+            />
         </div>
     )
 }

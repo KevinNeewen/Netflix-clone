@@ -1,0 +1,58 @@
+.Media-slider {
+    white-space: nowrap;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+
+    .carousel {
+        .toHide {
+            opacity: 0;
+        }
+
+        &-inner {
+            overflow: hidden;
+            .carousel-item {
+                .Media {
+                    margin-left: 0.1rem;
+                    margin-right: 0.1rem;
+                }
+            }
+        }
+
+        &-control {
+            &-prev {
+                width: 5%;
+                // z-index: 2;
+                background: rgba(0, 0, 0, 0);
+                transition: all 0.3s;
+
+                &:hover {
+                    .carousel-control-prev-icon {
+                        transform: scale(1.3);
+                    }
+                    background: linear-gradient(
+                        to left,
+                        rgba(0, 0, 0, 0),
+                        rgba(1, 1, 1, 0.6)
+                    );
+                }
+            }
+
+            &-next {
+                width: 14%;
+                background: rgba(0, 0, 0, 0);
+                transition: all 0.3s;
+                &:hover {
+                    background: linear-gradient(
+                        to right,
+                        rgba(0, 0, 0, 0),
+                        rgba(1, 1, 1, 0.6)
+                    );
+                    .carousel-control-next-icon {
+                        transform: scale(1.3);
+                    }
+                }
+            }
+        }
+    }
+}

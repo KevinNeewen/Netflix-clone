@@ -9,14 +9,14 @@
         url(https://image.tmdb.org/t/p/w1280/stmYfCUGd8Iy6kAMBr6AmWqx8Bq.jpg);
     height: 102vh;
     background-position: center;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
+    position: relative;
+    overflow: hidden;
 
     .Title-info-container {
+        top: 40%;
         width: 30%;
         height: 40%;
-        margin-left: 4.47rem;
-        margin-top: 13rem;
+        margin-left: 2.6rem;
+        transform: translate(0, -50%);
     }
 }
