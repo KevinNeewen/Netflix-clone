@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './media.scss'
 
 Media.propTypes = {
+    id: PropTypes.number,
     index: PropTypes.number,
     title: PropTypes.string,
     name: PropTypes.string,
@@ -11,9 +12,11 @@ Media.propTypes = {
     backdrop_path: PropTypes.string,
     vote_average: PropTypes.number,
     setOnMovieHover: PropTypes.func,
+    setActiveMovieId: PropTypes.func,
 }
 
 function Media({
+    id,
     index,
     title,
     name,
@@ -21,6 +24,7 @@ function Media({
     genres,
     vote_average,
     setOnMovieHover,
+    setActiveMovieId
 }) {
     const buildImageUrl = path => {
         return path === null
@@ -39,6 +43,7 @@ function Media({
             className="Media"
             onMouseEnter={() => filterStartAndEndHovers()}
             onMouseLeave={() => setOnMovieHover(false)}
+            onClick={() => setActiveMovieId(id)}
         >
             <div className="Media-pop-up-content">
                 <FontAwesomeIcon icon={['far', 'play-circle']} size="2x" />

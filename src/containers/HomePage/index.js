@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CoverScreen from '../../components/CoverScreen'
 import MediaShelf from '../../components/MediaShelf'
+import MediaModal from '../../components/MediaModal'
 import { requestApi } from '../../utils/restApis'
 import {
     getAllHomePageApiRequests,
@@ -26,19 +27,30 @@ function HomePage() {
             medias = setPosterSizeForMediaRow(medias, TOP_RATED_MOVIES)
             console.log(medias)
             setState({
-                mediasForCoverScreen: medias.shift(),
                 mediasForShelf: medias,
             })
         })
     }, [])
 
+    const [activeMovieId, setActiveMovieId] = useState(0)
+    useEffect(() => {
+        console.log('YO' + activeMovieId)
+    })
+
     return (
         <div className="Home-page">
-            {state.mediasForCoverScreen && (
-                <CoverScreen mediaRow={state.mediasForCoverScreen} />
+            {!!activeMovieId && (
+                <MediaModal
+                    isOpen={activeMovieId !== 0}
+                    closeModal={() => setActiveMovieId(0)}
+                />
             )}
+            <CoverScreen />
             {state.mediasForShelf && (
-                <MediaShelf mediaRows={state.mediasForShelf} />
+                <MediaShelf
+                    mediaRows={state.mediasForShelf}
+                    setActiveMovieId={setActiveMovieId}
+                />
             )}
         </div>
     )
