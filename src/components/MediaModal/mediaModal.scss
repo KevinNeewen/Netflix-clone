@@ -3,10 +3,44 @@
     &-dialog {
         width: calc(98vmin - 17px) !important;
         max-width: unset !important;
+        height: 100%;
 
         .modal-content {
             background-color: #141414;
+            height: 100%;
             color: #fff;
+            border-radius: 0.7rem;
+
+            .modal-header {
+                border-bottom: none;
+                padding: 0;
+                width: 100%;
+                position: relative !important;
+                top: 0;
+                left: 0;
+                .modal-title {
+                    position: absolute;
+                    img {
+                        width: 100%;
+                        border-radius: 0.7rem 0.7rem 0 0;
+                    }
+                }
+                .close {
+                    position: absolute;
+                    top: 19px;
+                    right: 19px;
+                    padding: 0;
+                    margin: 0;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    background-color: #141414;
+                    color: #fff;
+                    font-size: 1.7rem;
+                    font-weight: 100;
+                    z-index: 1001;
+                }
+            }
         }
     }
 }

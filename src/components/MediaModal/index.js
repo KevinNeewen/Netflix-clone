@@ -17,12 +17,12 @@ function MediaModal({ isOpen, closeModal, mediaDetails }) {
         <div>
             {!!mediaDetails && (
                 <Modal isOpen={isOpen} toggle={closeModal}>
-                    <ModalHeader toggle={closeModal}>
+                    <ModalHeader toggle={closeModal} tag="div">
                         <img
                             alt="Media"
                             src={buildImageUrl(
                                 mediaDetails.backdrop_path,
-                                'w500'
+                                'w1280'
                             )}
                         />
                     </ModalHeader>
