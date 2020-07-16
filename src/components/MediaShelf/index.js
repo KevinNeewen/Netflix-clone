@@ -5,10 +5,10 @@ import './mediaShelf.scss'
 
 MediaShelf.propTypes = {
     mediaRows: PropTypes.arrayOf(PropTypes.any),
-    setActiveMovieId: PropTypes.func,
+    setActiveMedia: PropTypes.func,
 }
 
-function MediaShelf({ mediaRows, setActiveMovieId }) {
+function MediaShelf({ mediaRows, setActiveMedia }) {
     return (
         <section className="Media-shelf">
             {mediaRows &&
@@ -19,7 +19,7 @@ function MediaShelf({ mediaRows, setActiveMovieId }) {
                             title={mediaRow.categoryTitle}
                             medias={mediaRow.mediasPerCategory}
                             isPoster={mediaRow.isPoster}
-                            setActiveMovieId={setActiveMovieId}
+                            setActiveMedia={setActiveMedia}
                         />
                     )
                 })}

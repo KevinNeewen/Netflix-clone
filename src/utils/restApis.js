@@ -31,6 +31,12 @@ const getTrendingMedia = mediaType => {
     )
 }
 
+const getMovieDetail = id => {
+    return getFetchData(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${movieDbApiKey}&language=en-US&append_to_response=similar%2Ccredits`
+    )
+}
+
 export const requestApi = {
     getMovieGenres: () => getMetaData(MOVIE, GENRE),
 
@@ -45,4 +51,6 @@ export const requestApi = {
 
     getTrendingMovies: () => getTrendingMedia(MOVIE),
     getTrendingTvShows: () => getTrendingMedia(TV),
+
+    getMovieDetails: id => getMovieDetail(id),
 }

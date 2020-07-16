@@ -1,5 +1,12 @@
-// .MediaModal {
-//     // height: 100px;
-//     // background-color: red;
-//     // width: 1000px;
-// }
+.modal {
+    max-width: 100% !important;
+    &-dialog {
+        width: calc(98vmin - 17px) !important;
+        max-width: unset !important;
+
+        .modal-content {
+            background-color: #141414;
+            color: #fff;
+        }
+    }
+}

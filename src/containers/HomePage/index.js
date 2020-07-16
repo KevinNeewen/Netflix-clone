@@ -10,6 +10,7 @@ import {
 } from './homePageService'
 import { TOP_RATED_MOVIES } from '../constants'
 import './homePage.scss'
+import { act } from '@testing-library/react'
 
 function HomePage() {
     const [state, setState] = useState({})
@@ -32,24 +33,36 @@ function HomePage() {
         })
     }, [])
 
-    const [activeMovieId, setActiveMovieId] = useState(0)
+    const [activeMedia, setActiveMedia] = useState({})
     useEffect(() => {
-        console.log('YO' + activeMovieId)
-    })
+        if (!!activeMedia.id) {
+            setIsLoading(true)
+            requestApi.getMovieDetails(activeMedia.id).then(response => {
+                setActiveMedia({
+                    id: activeMedia.id,
+                    detail: response,
+                })
+                setIsLoading(false)
+            })
+        }
+    }, [activeMedia.id])
+
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <div className="Home-page">
-            {!!activeMovieId && (
+            {activeMedia.id && !isLoading && (
                 <MediaModal
-                    isOpen={activeMovieId !== 0}
-                    closeModal={() => setActiveMovieId(0)}
+                    isOpen={!!activeMedia.id}
+                    closeModal={() => setActiveMedia({})}
+                    mediaDetails={activeMedia.detail}
                 />
             )}
             <CoverScreen />
             {state.mediasForShelf && (
                 <MediaShelf
                     mediaRows={state.mediasForShelf}
-                    setActiveMovieId={setActiveMovieId}
+                    setActiveMedia={setActiveMedia}
                 />
             )}
         </div>

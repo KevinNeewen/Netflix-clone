@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { buildImageUrl } from '../../utils/imageBuilder'
 import './media.scss'
 
 Media.propTypes = {
@@ -12,7 +13,7 @@ Media.propTypes = {
     backdrop_path: PropTypes.string,
     vote_average: PropTypes.number,
     setOnMovieHover: PropTypes.func,
-    setActiveMovieId: PropTypes.func,
+    setActiveMovie: PropTypes.func,
 }
 
 function Media({
@@ -24,14 +25,8 @@ function Media({
     genres,
     vote_average,
     setOnMovieHover,
-    setActiveMovieId
+    setActiveMedia,
 }) {
-    const buildImageUrl = path => {
-        return path === null
-            ? '/images/fallbackImage.jpg'
-            : `https://image.tmdb.org/t/p/w500//${path}`
-    }
-
     const filterStartAndEndHovers = () => {
         if (index !== 6) {
             setOnMovieHover(true)
@@ -43,7 +38,7 @@ function Media({
             className="Media"
             onMouseEnter={() => filterStartAndEndHovers()}
             onMouseLeave={() => setOnMovieHover(false)}
-            onClick={() => setActiveMovieId(id)}
+            onClick={() => setActiveMedia({ id })}
         >
             <div className="Media-pop-up-content">
                 <FontAwesomeIcon icon={['far', 'play-circle']} size="2x" />
@@ -59,7 +54,7 @@ function Media({
                 )}
                 <FontAwesomeIcon icon="angle-down" size="2x" />
             </div>
-            <img alt="Media" src={buildImageUrl(backdrop_path)} />
+            <img alt="Media" src={buildImageUrl(backdrop_path, 'w500')} />
         </div>
     )
 }
