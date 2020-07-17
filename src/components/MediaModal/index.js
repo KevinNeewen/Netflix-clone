@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { buildImageUrl } from '../../utils/imageBuilder'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import PropTypes from 'prop-types'
+import { MediaModalHeader } from './mediaModalHeader'
+import { MediaModalBody } from './mediaModalBody'
 import './mediaModal.scss'
 
 MediaModal.propTypes = {
@@ -19,30 +19,14 @@ function MediaModal({ isOpen, closeModal, mediaDetails }) {
             {!!mediaDetails && (
                 <Modal isOpen={isOpen} toggle={closeModal}>
                     <ModalHeader toggle={closeModal} tag="div">
-                        <img
-                            alt="Media"
-                            src={buildImageUrl(
-                                mediaDetails.backdrop_path,
-                                'w1280'
-                            )}
+                        <MediaModalHeader
+                            title={mediaDetails.title}
+                            imagePath={mediaDetails.backdrop_path}
                         />
-                        <div className="title-info-container">
-                            <h1>{mediaDetails.title}</h1>
-                            <Button>
-                                <FontAwesomeIcon icon={['fas', 'play']} />
-                                <span>Play</span>
-                            </Button>
-                            <div className="icon-wrapper">
-                                <FontAwesomeIcon icon={['far', 'thumbs-up']} />
-                            </div>
-                            <div className="icon-wrapper">
-                                <FontAwesomeIcon
-                                    icon={['far', 'thumbs-down']}
-                                />
-                            </div>
-                        </div>
                     </ModalHeader>
-                    <ModalBody></ModalBody>
+                    <ModalBody>
+                        <MediaModalBody detail={mediaDetails} />
+                    </ModalBody>
                 </Modal>
             )}
         </div>
