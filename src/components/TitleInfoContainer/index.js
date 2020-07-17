@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './titleInfoContainer.scss'
 
 function TitleInfoContainer() {
@@ -11,8 +12,14 @@ function TitleInfoContainer() {
                 Sonic the Hedgehog tells the story of the world’s speediest
                 hedgehog as he embraces his new home on Earth.
             </p>
-            <Button>Play</Button>
-            <Button>More Info</Button>
+            <Button>
+                <FontAwesomeIcon icon={['fas', 'play']} />
+                <span>Play</span>
+            </Button>
+            <Button>
+                <FontAwesomeIcon icon="info-circle" />
+                <span>More Info</span>
+            </Button>
         </div>
     )
 }

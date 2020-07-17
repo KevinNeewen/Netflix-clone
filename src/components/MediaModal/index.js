@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { buildImageUrl } from '../../utils/imageBuilder'
 import PropTypes from 'prop-types'
 import './mediaModal.scss'
@@ -25,6 +26,21 @@ function MediaModal({ isOpen, closeModal, mediaDetails }) {
                                 'w1280'
                             )}
                         />
+                        <div className="title-info-container">
+                            <h1>{mediaDetails.title}</h1>
+                            <Button>
+                                <FontAwesomeIcon icon={['fas', 'play']} />
+                                <span>Play</span>
+                            </Button>
+                            <div className="icon-wrapper">
+                                <FontAwesomeIcon icon={['far', 'thumbs-up']} />
+                            </div>
+                            <div className="icon-wrapper">
+                                <FontAwesomeIcon
+                                    icon={['far', 'thumbs-down']}
+                                />
+                            </div>
+                        </div>
                     </ModalHeader>
                     <ModalBody></ModalBody>
                 </Modal>
