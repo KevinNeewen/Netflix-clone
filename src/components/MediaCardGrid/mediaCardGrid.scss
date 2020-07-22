@@ -1,0 +1,85 @@
+.media-card-grid {
+    display: flex;
+    flex-direction: column;
+    .media-card-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.2rem 0.5rem;
+        .card {
+            margin: 0.2rem 0.5rem;
+            border: none;
+            background-color: #2f2f2f;
+            flex: 1;
+            position: relative;
+            cursor: pointer;
+            svg {
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10;
+                opacity: 0;
+                transition: opacity 0.3s;
+                transition-delay: 0s;
+                background-color: rgba(30, 30, 20, 0.5);
+                border-radius: 2.5rem;
+            }
+            &:hover {
+                svg {
+                    transition: opacity 0.3s ease-in-out 0.3s;
+                    opacity: 1;
+                }
+            }
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+            &-text {
+                font-size: 0.9rem;
+                color: #d2d2d2;
+            }
+            .card-img {
+                position: relative;
+                height: 40%;
+                img {
+                    height: 100%;
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(
+                        198deg,
+                        rgba(0, 0, 0, 0.9) 0,
+                        rgba(24, 24, 24, 0.5) 20%,
+                        transparent 28%
+                    );
+                }
+            }
+            &-body {
+                .card-title {
+                    margin-bottom: 0.3rem;
+                    font-size: 0.9rem;
+                }
+                .card-subtitle {
+                    font-size: 0.7rem;
+                    &-vote-average {
+                        color: #46d369;
+                        font-weight: 700;
+                        margin-right: 0.5rem;
+                    }
+                    margin-bottom: 0.5rem;
+                }
+                .card-text {
+                    font-size: 0.6rem;
+                }
+                padding-bottom: 1rem;
+            }
+        }
+    }
+}

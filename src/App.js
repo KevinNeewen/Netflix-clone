@@ -15,7 +15,7 @@ library.add(far, faPlayCircle, faInfoCircle, faPlay, faAngleDown)
 
 function App() {
     return (
-        <div className="App">
+        <div className="app">
             <Header />
             <HomePage />
         </div>

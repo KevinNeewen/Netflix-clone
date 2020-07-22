@@ -7,11 +7,13 @@
 
         .modal-content {
             background-color: #181818;
-            height: 100%;
+            height: auto;
             color: #fff;
             border-radius: 0.7rem;
             box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
             border: none;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
 
             .modal-header {
                 border-bottom: none;
@@ -20,9 +22,10 @@
                 position: relative !important;
                 top: 0;
                 left: 0;
-                height: 55%;
+                height: 53vh;
                 .modal-title {
                     position: absolute;
+                    width: 100%;
                     img {
                         width: 100%;
                         border-radius: 0.7rem 0.7rem 0 0;
@@ -42,14 +45,14 @@
                         );
                     }
 
-                    .title-info-container {
+                    .header-info-container {
                         position: absolute;
-                        bottom: 15%;
+                        bottom: 13%;
                         padding-left: 2rem;
                         z-index: 10;
                         width: 45%;
                         h1 {
-                            margin-bottom: 0.5rem;
+                            margin-bottom: 0;
                         }
                         button {
                             align-items: center;
@@ -112,15 +115,42 @@
             }
 
             .modal-body {
+                h4 {
+                    margin-left: 0.8rem;
+                    margin-top: 2.8rem;
+                }
                 .detail-info {
+                    margin-left: 0.2rem;
+                    margin-right: 0.2rem;
                     &-numeric {
                         margin-bottom: 0.7rem;
                         &-vote-average {
-                            color: rgb(70, 211, 105);
+                            color: #46d369;
+                            font-weight: 700;
                         }
                         span {
                             margin-right: 0.8rem;
                         }
+                    }
+                    &-overview {
+                        line-height: 1.3rem;
+                    }
+                    &-cast-genre {
+                        font-size: 0.85rem;
+                        div {
+                            margin-bottom: 0.5rem;
+                        }
+                        span {
+                            color: #777;
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
+
+                .media-card-grid {
+                    .media-card-row {
+                        margin-left: 0.75rem;
+                        margin-right: 0.75rem;
                     }
                 }
             }

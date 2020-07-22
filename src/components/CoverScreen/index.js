@@ -1,15 +1,10 @@
 import React from 'react'
 import TitleInfoContainer from '../TitleInfoContainer'
-import PropTypes from 'prop-types'
 import './coverScreen.scss'
 
-CoverScreen.propTypes = {
-    mediaRow: PropTypes.any,
-}
-
-function CoverScreen({ mediaRow }) {
+function CoverScreen() {
     return (
-        <div className="Cover-screen">
+        <div className="cover-screen">
             <TitleInfoContainer />
         </div>
     )

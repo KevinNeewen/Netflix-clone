@@ -6,10 +6,12 @@ import './mediaRow.scss'
 MediaRow.propTypes = {
     title: PropTypes.string,
     medias: PropTypes.arrayOf(PropTypes.object),
+    mediaType: PropTypes.string,
+    activeMedia: PropTypes.number,
     setActiveMedia: PropTypes.func,
 }
 
-function MediaRow({ title, medias, setActiveMedia }) {
+function MediaRow({ title, medias, mediaType, activeMedia, setActiveMedia }) {
     const splitMediasForSlide = () => {
         const slide = []
 
@@ -32,10 +34,12 @@ function MediaRow({ title, medias, setActiveMedia }) {
     }
 
     return (
-        <div className="Media-row">
+        <div className="media-row">
             <h3>{title}</h3>
             <MediaSlider
                 splitMovies={splitMediasForSlide()}
+                mediaType={mediaType}
+                activeMedia={activeMedia}
                 setActiveMedia={setActiveMedia}
             />
         </div>

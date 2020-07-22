@@ -1,8 +1,6 @@
 import { getFetchData } from './fetchData'
-
+import { TV, MOVIE } from '../constants'
 const movieDbApiKey = '5d1e37a1c98f8c9c92ada6ae97c30854'
-const TV = 'tv'
-const MOVIE = 'movie'
 const GENRE = 'genre'
 const TOP_RATED = 'top_rated'
 const POPULAR = 'popular'
@@ -31,9 +29,9 @@ const getTrendingMedia = mediaType => {
     )
 }
 
-const getMovieDetail = id => {
+const getMediaDetails = (id, mediaType) => {
     return getFetchData(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${movieDbApiKey}&language=en-US&append_to_response=similar%2Ccredits`
+        `https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${movieDbApiKey}&language=en-US&append_to_response=similar%2Ccredits`
     )
 }
 
@@ -52,5 +50,5 @@ export const requestApi = {
     getTrendingMovies: () => getTrendingMedia(MOVIE),
     getTrendingTvShows: () => getTrendingMedia(TV),
 
-    getMovieDetails: id => getMovieDetail(id),
+    getMediaDetails: (id, mediaType) => getMediaDetails(id, mediaType),
 }

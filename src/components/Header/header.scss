@@ -12,12 +12,11 @@ header {
     );
 
     .nav {
-        // padding-top: 1rem;
+        align-items: center;
+
         .nav-item:first-child {
             margin-right: 1.5rem;
         }
-
-        align-items: center;
 
         .nav-item {
             transition: color 0.3s;

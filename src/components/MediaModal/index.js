@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import PropTypes from 'prop-types'
 import { MediaModalHeader } from './mediaModalHeader'
-import { MediaModalBody } from './mediaModalBody'
+import { ModalDetailInfo } from './modalDetailInfo'
+import MediaCardGrid from '../MediaCardGrid'
 import './mediaModal.scss'
 
 MediaModal.propTypes = {
@@ -12,20 +13,27 @@ MediaModal.propTypes = {
 }
 
 function MediaModal({ isOpen, closeModal, mediaDetails }) {
-    console.log('movie details')
-    console.log(mediaDetails)
     return (
         <div>
             {!!mediaDetails && (
                 <Modal isOpen={isOpen} toggle={closeModal}>
                     <ModalHeader toggle={closeModal} tag="div">
                         <MediaModalHeader
-                            title={mediaDetails.title}
+                            title={mediaDetails.title || mediaDetails.name}
                             imagePath={mediaDetails.backdrop_path}
                         />
                     </ModalHeader>
                     <ModalBody>
-                        <MediaModalBody detail={mediaDetails} />
+                        <ModalDetailInfo detail={mediaDetails} />
+                        {mediaDetails.similar &&
+                            mediaDetails.similar.results.length > 0 && (
+                                <>
+                                    <h4>More Like This</h4>
+                                    <MediaCardGrid
+                                        medias={mediaDetails.similar.results}
+                                    />
+                                </>
+                            )}
                     </ModalBody>
                 </Modal>
             )}

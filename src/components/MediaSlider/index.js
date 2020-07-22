@@ -7,10 +7,12 @@ import './mediaSlider.scss'
 
 MediaSlider.propTypes = {
     splitMovies: PropTypes.arrayOf(PropTypes.array),
+    mediaType: PropTypes.string,
+    activeMedia: PropTypes.number,
     setActiveMedia: PropTypes.func,
 }
 
-function MediaSlider({ splitMovies, setActiveMedia }) {
+function MediaSlider({ splitMovies, mediaType, activeMedia, setActiveMedia }) {
     const [activeSlide, setActiveSlide] = useState(0)
     const [animating, setAnimating] = useState(false)
     const [onMovieHover, setOnMovieHover] = useState(false)
@@ -41,6 +43,8 @@ function MediaSlider({ splitMovies, setActiveMedia }) {
                         <Media
                             index={index}
                             key={movie.id}
+                            mediaType={mediaType}
+                            activeMedia={activeMedia}
                             setOnMovieHover={setOnMovieHover}
                             setActiveMedia={setActiveMedia}
                             {...movie}
@@ -52,7 +56,7 @@ function MediaSlider({ splitMovies, setActiveMedia }) {
     })
 
     return (
-        <div className="Media-slider">
+        <div className="media-slider">
             <Carousel
                 interval={false}
                 activeIndex={activeSlide}

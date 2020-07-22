@@ -8,9 +8,8 @@ import {
     addTitleAndMapGenreToAllMedia,
     setPosterSizeForMediaRow,
 } from './homePageService'
-import { TOP_RATED_MOVIES } from '../constants'
+import { TOP_RATED_MOVIES, MOVIE_TYPE } from '../constants'
 import './homePage.scss'
-import { act } from '@testing-library/react'
 
 function HomePage() {
     const [state, setState] = useState({})
@@ -26,7 +25,6 @@ function HomePage() {
             )
 
             medias = setPosterSizeForMediaRow(medias, TOP_RATED_MOVIES)
-            console.log(medias)
             setState({
                 mediasForShelf: medias,
             })
@@ -35,22 +33,24 @@ function HomePage() {
 
     const [activeMedia, setActiveMedia] = useState({})
     useEffect(() => {
-        if (!!activeMedia.id) {
+        if (!!activeMedia.id && activeMedia.mediaType) {
             setIsLoading(true)
-            requestApi.getMovieDetails(activeMedia.id).then(response => {
-                setActiveMedia({
-                    id: activeMedia.id,
-                    detail: response,
+            requestApi
+                .getMediaDetails(activeMedia.id, activeMedia.mediaType)
+                .then(response => {
+                    setActiveMedia({
+                        id: activeMedia.id,
+                        detail: response,
+                    })
+                    setIsLoading(false)
                 })
-                setIsLoading(false)
-            })
         }
     }, [activeMedia.id])
 
     const [isLoading, setIsLoading] = useState(false)
 
     return (
-        <div className="Home-page">
+        <div className="home-page">
             {activeMedia.id && !isLoading && (
                 <MediaModal
                     isOpen={!!activeMedia.id}
@@ -61,6 +61,7 @@ function HomePage() {
             <CoverScreen />
             {state.mediasForShelf && (
                 <MediaShelf
+                    activeMedia={activeMedia.id}
                     mediaRows={state.mediasForShelf}
                     setActiveMedia={setActiveMedia}
                 />

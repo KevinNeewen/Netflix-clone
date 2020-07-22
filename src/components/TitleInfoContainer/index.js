@@ -5,7 +5,7 @@ import './titleInfoContainer.scss'
 
 function TitleInfoContainer() {
     return (
-        <div className="Title-info-container">
+        <div className="title-info-container">
             <h1>Sonic the HedgeHog</h1>
             <p>
                 Based on the global blockbuster videogame franchise from Sega,

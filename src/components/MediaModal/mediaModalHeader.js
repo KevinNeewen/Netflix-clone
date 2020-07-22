@@ -12,7 +12,7 @@ export function MediaModalHeader({ imagePath, title }) {
     return (
         <>
             <img alt="Media" src={buildImageUrl(imagePath, 'w1280')} />
-            <div className="title-info-container">
+            <div className="header-info-container">
                 <h1>{title}</h1>
                 <Button>
                     <FontAwesomeIcon icon={['fas', 'play']} />
