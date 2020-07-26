@@ -15,6 +15,13 @@
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
 
+            .background {
+                z-index: 20;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                background-color: inherit;
+            }
             .modal-header {
                 border-bottom: none;
                 padding: 0;
@@ -118,6 +125,9 @@
                 h4 {
                     margin-left: 0.8rem;
                     margin-top: 2.8rem;
+                }
+                .container {
+                    max-width: unset;
                 }
                 .detail-info {
                     margin-left: 0.2rem;

@@ -13,9 +13,9 @@ Media.propTypes = {
     backdrop_path: PropTypes.string,
     vote_average: PropTypes.number,
     mediaType: PropTypes.string,
-    activeMedia: PropTypes.number,
     setOnMovieHover: PropTypes.func,
     setActiveMovie: PropTypes.func,
+    imageLoaded: PropTypes.func,
 }
 
 function Media({
@@ -27,16 +27,15 @@ function Media({
     genres,
     vote_average,
     mediaType,
-    activeMedia,
     setOnMovieHover,
     setActiveMedia,
+    imageLoaded,
 }) {
     const filterStartAndEndHovers = () => {
         if (index !== 6) {
             setOnMovieHover(true)
         }
     }
-
     return (
         <div
             className="media"
@@ -44,7 +43,6 @@ function Media({
             onMouseLeave={() => setOnMovieHover(false)}
             onClick={() => setActiveMedia({ id, mediaType })}
         >
-            {/* {activeMedia && <div className="media-modal-animation" />} */}
             <div className="media-pop-up-content">
                 <FontAwesomeIcon icon={['far', 'play-circle']} size="2x" />
                 <h4>{title || name}</h4>
@@ -59,7 +57,11 @@ function Media({
                 )}
                 <FontAwesomeIcon icon="angle-down" size="2x" />
             </div>
-            <img alt="Media" src={buildImageUrl(backdrop_path, 'w500')} />
+            <img
+                alt="Media"
+                onLoad={imageLoaded}
+                src={buildImageUrl(backdrop_path, 'w500')}
+            />
         </div>
     )
 }

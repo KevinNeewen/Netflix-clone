@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import CoverScreen from '../../components/CoverScreen'
 import MediaShelf from '../../components/MediaShelf'
 import MediaModal from '../../components/MediaModal'
@@ -8,12 +8,13 @@ import {
     addTitleAndMapGenreToAllMedia,
     setPosterSizeForMediaRow,
 } from './homePageService'
-import { TOP_RATED_MOVIES, MOVIE_TYPE } from '../constants'
+import { TOP_RATED_MOVIES } from '../constants'
 import './homePage.scss'
 
-function HomePage() {
+function HomePage({ setIsPageLoading }) {
     const [state, setState] = useState({})
     useEffect(() => {
+        setIsPageLoading(true)
         Promise.all([
             requestApi.getMovieGenres(),
             ...getAllHomePageApiRequests(),
@@ -23,18 +24,24 @@ function HomePage() {
                 genreResponse.genres,
                 response
             )
-
+            var totalMediaCount = medias.reduce(
+                (count, toAdd) => count + toAdd.mediasPerCategory.length,
+                0
+            )
             medias = setPosterSizeForMediaRow(medias, TOP_RATED_MOVIES)
             setState({
                 mediasForShelf: medias,
+                totalMediaCount,
             })
         })
     }, [])
 
+    const [isModalLoading, setIsModalLoading] = useState(false)
+
     const [activeMedia, setActiveMedia] = useState({})
     useEffect(() => {
         if (!!activeMedia.id && activeMedia.mediaType) {
-            setIsLoading(true)
+            setIsModalLoading(true)
             requestApi
                 .getMediaDetails(activeMedia.id, activeMedia.mediaType)
                 .then(response => {
@@ -42,20 +49,19 @@ function HomePage() {
                         id: activeMedia.id,
                         detail: response,
                     })
-                    setIsLoading(false)
                 })
         }
     }, [activeMedia.id])
 
-    const [isLoading, setIsLoading] = useState(false)
-
     return (
         <div className="home-page">
-            {activeMedia.id && !isLoading && (
+            {activeMedia.id && (
                 <MediaModal
                     isOpen={!!activeMedia.id}
                     closeModal={() => setActiveMedia({})}
                     mediaDetails={activeMedia.detail}
+                    setIsModalLoading={setIsModalLoading}
+                    isModalLoading={isModalLoading}
                 />
             )}
             <CoverScreen />
@@ -64,6 +70,8 @@ function HomePage() {
                     activeMedia={activeMedia.id}
                     mediaRows={state.mediasForShelf}
                     setActiveMedia={setActiveMedia}
+                    mediaCountToLoad={state.totalMediaCount}
+                    setIsLoading={setIsPageLoading}
                 />
             )}
         </div>

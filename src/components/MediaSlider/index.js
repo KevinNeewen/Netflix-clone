@@ -10,9 +10,16 @@ MediaSlider.propTypes = {
     mediaType: PropTypes.string,
     activeMedia: PropTypes.number,
     setActiveMedia: PropTypes.func,
+    onSliderLoaded: PropTypes.func,
 }
 
-function MediaSlider({ splitMovies, mediaType, activeMedia, setActiveMedia }) {
+function MediaSlider({
+    splitMovies,
+    mediaType,
+    activeMedia,
+    setActiveMedia,
+    onSliderLoaded,
+}) {
     const [activeSlide, setActiveSlide] = useState(0)
     const [animating, setAnimating] = useState(false)
     const [onMovieHover, setOnMovieHover] = useState(false)
@@ -47,6 +54,7 @@ function MediaSlider({ splitMovies, mediaType, activeMedia, setActiveMedia }) {
                             activeMedia={activeMedia}
                             setOnMovieHover={setOnMovieHover}
                             setActiveMedia={setActiveMedia}
+                            imageLoaded={onSliderLoaded}
                             {...movie}
                         />
                     )

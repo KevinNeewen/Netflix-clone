@@ -4,7 +4,7 @@ header {
     height: 5rem;
     padding: 0 2.4rem;
     display: flex !important;
-    z-index: 1;
+    z-index: 10;
     background-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.7) 10%,
@@ -21,9 +21,9 @@ header {
         .nav-item {
             transition: color 0.3s;
             .nav-link {
+                font-size: 1rem;
                 padding-left: 0.7rem;
                 padding-right: 0.7rem;
-                font-size: 1rem;
                 color: #fff;
                 &:hover {
                     color: #e5e5e5;

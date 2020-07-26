@@ -7,11 +7,16 @@ import { buildImageUrl } from '../../utils/imageBuilder'
 MediaModalHeader.propTypes = {
     imagePath: PropTypes.string,
     title: PropTypes.string,
+    imageLoad: PropTypes.func,
 }
-export function MediaModalHeader({ imagePath, title }) {
+export function MediaModalHeader({ imagePath, title, imageLoad }) {
     return (
         <>
-            <img alt="Media" src={buildImageUrl(imagePath, 'w1280')} />
+            <img
+                alt="Media"
+                onLoad={imageLoad}
+                src={buildImageUrl(imagePath, 'w1280')}
+            />
             <div className="header-info-container">
                 <h1>{title}</h1>
                 <Button>

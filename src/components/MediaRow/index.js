@@ -9,9 +9,17 @@ MediaRow.propTypes = {
     mediaType: PropTypes.string,
     activeMedia: PropTypes.number,
     setActiveMedia: PropTypes.func,
+    isRowLoaded: PropTypes.func,
 }
 
-function MediaRow({ title, medias, mediaType, activeMedia, setActiveMedia }) {
+function MediaRow({
+    title,
+    medias,
+    mediaType,
+    activeMedia,
+    setActiveMedia,
+    onRowLoaded,
+}) {
     const splitMediasForSlide = () => {
         const slide = []
 
@@ -41,6 +49,7 @@ function MediaRow({ title, medias, mediaType, activeMedia, setActiveMedia }) {
                 mediaType={mediaType}
                 activeMedia={activeMedia}
                 setActiveMedia={setActiveMedia}
+                onSliderLoaded={onRowLoaded}
             />
         </div>
     )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faPlayCircle,
@@ -7,6 +7,7 @@ import {
     faAngleDown,
 } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
+import { Spinner } from 'reactstrap'
 import Header from './components/Header'
 import HomePage from './containers/HomePage'
 import './App.scss'
@@ -14,10 +15,22 @@ import './App.scss'
 library.add(far, faPlayCircle, faInfoCircle, faPlay, faAngleDown)
 
 function App() {
+    const [isPageLoading, setIsPageLoading] = useState(false)
+
     return (
         <div className="app">
             <Header />
-            <HomePage />
+            {!!isPageLoading && (
+                <div className="background">
+                    <div className="spinner">
+                        <Spinner color="danger" />
+                    </div>
+                </div>
+            )}
+            <HomePage
+                isPageLoading={isPageLoading}
+                setIsPageLoading={setIsPageLoading}
+            />
         </div>
     )
 }

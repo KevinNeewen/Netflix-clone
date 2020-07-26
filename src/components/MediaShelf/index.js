@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import MediaRow from '../MediaRow'
 import './mediaShelf.scss'
@@ -7,9 +7,23 @@ MediaShelf.propTypes = {
     mediaRows: PropTypes.arrayOf(PropTypes.any),
     activeMedia: PropTypes.number,
     setActiveMedia: PropTypes.func,
+    mediaCountToLoad: PropTypes.number,
+    setIsLoading: PropTypes.func,
 }
 
-function MediaShelf({ mediaRows, activeMedia, setActiveMedia }) {
+function MediaShelf({
+    mediaRows,
+    mediaCountToLoad,
+    activeMedia,
+    setActiveMedia,
+    setIsLoading,
+}) {
+    const loadedImages = useRef(0)
+    const onMediasLoaded = () => {
+        if (++loadedImages.current >= mediaCountToLoad) {
+            setIsLoading(false)
+        }
+    }
     return (
         <section className="media-shelf">
             {mediaRows &&
@@ -23,6 +37,7 @@ function MediaShelf({ mediaRows, activeMedia, setActiveMedia }) {
                             isPoster={mediaRow.isPoster}
                             mediaType={mediaRow.mediaType}
                             setActiveMedia={setActiveMedia}
+                            onRowLoaded={onMediasLoaded}
                         />
                     )
                 })}

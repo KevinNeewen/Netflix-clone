@@ -12,7 +12,7 @@ import { buildImageUrl } from '../../utils/imageBuilder'
 import { formatDate } from '../../utils/formatter'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const MediaCard = ({ details }) => {
+const MediaCard = ({ details, imageLoad }) => {
     const [onHover, setOnHover] = useState(false)
 
     MediaCard.propTypes = {
@@ -50,6 +50,7 @@ const MediaCard = ({ details }) => {
             )}
             <div className="card-img">
                 <CardImg
+                    onLoad={imageLoad}
                     top
                     width="100%"
                     src={buildImageUrl(backdrop_path, 'w500')}
