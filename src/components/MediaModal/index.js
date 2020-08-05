@@ -1,9 +1,10 @@
 import React, { useRef } from 'react'
-import { Modal, ModalHeader, ModalBody, Spinner } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import PropTypes from 'prop-types'
 import { MediaModalHeader } from './mediaModalHeader'
 import { ModalDetailInfo } from './modalDetailInfo'
 import MediaCardGrid from '../MediaCardGrid'
+import Spinner from '../Spinner'
 import './mediaModal.scss'
 
 MediaModal.propTypes = {
@@ -35,18 +36,14 @@ function MediaModal({
         <div>
             {!!mediaDetails && (
                 <Modal isOpen={isOpen} toggle={closeModal}>
-                    {!!isModalLoading && (
-                        <div className="background">
-                            <div className="spinner">
-                                <Spinner color="danger" />
-                            </div>
-                        </div>
-                    )}
+                    {!!isModalLoading && <div className="background" />}
                     <ModalHeader toggle={closeModal} tag="div">
+                        {!!isModalLoading && <Spinner />}
                         <MediaModalHeader
                             title={mediaDetails.title || mediaDetails.name}
                             imagePath={mediaDetails.backdrop_path}
                             imageLoad={onModalMediasLoaded}
+                            isModalLoading={isModalLoading}
                         />
                     </ModalHeader>
                     <ModalBody>

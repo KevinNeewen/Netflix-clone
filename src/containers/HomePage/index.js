@@ -9,7 +9,6 @@ import {
     setPosterSizeForMediaRow,
 } from './homePageService'
 import { TOP_RATED_MOVIES } from '../constants'
-import './homePage.scss'
 
 function HomePage({ setIsPageLoading }) {
     const [state, setState] = useState({})
@@ -54,7 +53,7 @@ function HomePage({ setIsPageLoading }) {
     }, [activeMedia.id])
 
     return (
-        <div className="home-page">
+        <div>
             {activeMedia.id && (
                 <MediaModal
                     isOpen={!!activeMedia.id}

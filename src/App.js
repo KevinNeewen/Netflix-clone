@@ -7,7 +7,7 @@ import {
     faAngleDown,
 } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-import { Spinner } from 'reactstrap'
+import Spinner from './components/Spinner'
 import Header from './components/Header'
 import HomePage from './containers/HomePage'
 import './App.scss'
@@ -22,9 +22,7 @@ function App() {
             <Header />
             {!!isPageLoading && (
                 <div className="background">
-                    <div className="spinner">
-                        <Spinner color="danger" />
-                    </div>
+                    <Spinner />
                 </div>
             )}
             <HomePage

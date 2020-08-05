@@ -25,7 +25,7 @@ function MediaShelf({
         }
     }
     return (
-        <section className="media-shelf">
+        <section className="media-shelf header">
             {mediaRows &&
                 mediaRows.map(mediaRow => {
                     return (

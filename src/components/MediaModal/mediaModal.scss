@@ -17,12 +17,28 @@
 
             .background {
                 z-index: 20;
+                border-radius: 0.7rem;
                 height: 100%;
                 width: 100%;
+                top: 0;
+                left: 0;
                 position: absolute;
                 background-color: inherit;
             }
+
             .modal-header {
+                .spinner {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    background-color: #181818;
+                    transform: translate(-50%, -50%);
+                    &-border {
+                        width: 6rem;
+                        height: 6rem;
+                        color: red;
+                    }
+                }
                 border-bottom: none;
                 padding: 0;
                 width: 100%;
@@ -33,8 +49,10 @@
                 .modal-title {
                     position: absolute;
                     width: 100%;
+                    height: auto;
                     img {
                         width: 100%;
+                        height: 53vh;
                         border-radius: 0.7rem 0.7rem 0 0;
                     }
 
@@ -112,7 +130,6 @@
                     color: #fff;
                     z-index: 1001;
                     span {
-                        // height: 1.5rem;
                         font-size: 2.5rem;
                         font-weight: 100;
                         vertical-align: middle;
