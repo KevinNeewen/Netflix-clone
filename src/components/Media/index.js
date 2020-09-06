@@ -31,16 +31,15 @@ function Media({
     setActiveMedia,
     imageLoaded,
 }) {
-    const filterStartAndEndHovers = () => {
-        if (index !== 6) {
-            setOnMovieHover(true)
-        }
+    const delayMouseHover = bool => {
+        setTimeout(() => setOnMovieHover(bool), 300)
     }
+
     return (
         <div
             className="media"
-            onMouseEnter={() => filterStartAndEndHovers()}
-            onMouseLeave={() => setOnMovieHover(false)}
+            onMouseEnter={() => delayMouseHover(true)}
+            onMouseLeave={() => delayMouseHover(false)}
             onClick={() => setActiveMedia({ id, mediaType })}
         >
             <div className="media-pop-up-content">

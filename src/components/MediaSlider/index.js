@@ -31,13 +31,6 @@ function MediaSlider({
         setActiveSlide(nextIndex)
     }
 
-    const previous = () => {
-        if (animating) return
-        const previousIndex =
-            activeSlide === 0 ? splitMovies.length - 1 : activeSlide - 1
-        setActiveSlide(previousIndex)
-    }
-
     const moviesForSlide = splitMovies.map(slide => {
         return (
             <CarouselItem
@@ -62,30 +55,17 @@ function MediaSlider({
             </CarouselItem>
         )
     })
-
+    console.log(onMovieHover)
     return (
         <div className="media-slider">
-            <Carousel
-                interval={false}
-                activeIndex={activeSlide}
-                next={next}
-                previous={previous}
-            >
-                <div className={classNames({ toHide: onMovieHover })}>
-                    <CarouselControl
-                        direction="prev"
-                        directionText="Previous"
-                        onClickHandler={previous}
-                    />
-                </div>
+            <Carousel interval={false} activeIndex={activeSlide} next={next}>
                 {moviesForSlide}
-                <div className={classNames({ toHide: onMovieHover })}>
-                    <CarouselControl
-                        direction="next"
-                        directionText="Next"
-                        onClickHandler={next}
-                    />
-                </div>
+                <CarouselControl
+                    className={classNames({ toHide: onMovieHover })}
+                    direction="next"
+                    directionText="Next"
+                    onClickHandler={next}
+                />
             </Carousel>
         </div>
     )

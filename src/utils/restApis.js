@@ -1,6 +1,6 @@
 import { getFetchData } from './fetchData'
 import { TV, MOVIE } from '../constants'
-const movieDbApiKey = '5d1e37a1c98f8c9c92ada6ae97c30854'
+const movieDbApiKey = 'xxxxx'
 const GENRE = 'genre'
 const TOP_RATED = 'top_rated'
 const POPULAR = 'popular'

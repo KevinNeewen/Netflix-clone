@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import CoverScreen from '../../components/CoverScreen'
 import MediaShelf from '../../components/MediaShelf'
 import MediaModal from '../../components/MediaModal'
@@ -10,7 +10,7 @@ import {
 } from './homePageService'
 import { TOP_RATED_MOVIES } from '../constants'
 
-function HomePage({ setIsPageLoading }) {
+function HomePage({ setIsPageLoading, elementToStick }) {
     const [state, setState] = useState({})
     useEffect(() => {
         setIsPageLoading(true)
@@ -63,7 +63,7 @@ function HomePage({ setIsPageLoading }) {
                     isModalLoading={isModalLoading}
                 />
             )}
-            <CoverScreen />
+            <CoverScreen elementToStick={elementToStick} />
             {state.mediasForShelf && (
                 <MediaShelf
                     activeMedia={activeMedia.id}

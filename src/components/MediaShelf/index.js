@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import MediaRow from '../MediaRow'
 import './mediaShelf.scss'
@@ -24,8 +24,9 @@ function MediaShelf({
             setIsLoading(false)
         }
     }
+
     return (
-        <section className="media-shelf header">
+        <section className="media-shelf">
             {mediaRows &&
                 mediaRows.map(mediaRow => {
                     return (

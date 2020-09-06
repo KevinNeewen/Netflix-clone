@@ -5,7 +5,7 @@ import './header.scss'
 
 const Header = () => {
     return (
-        <header>
+        <div className="header">
             <Nav>
                 <NavItem>
                     <Logo />
@@ -26,7 +26,7 @@ const Header = () => {
                     <NavLink href="#">My List</NavLink>
                 </NavItem>
             </Nav>
-        </header>
+        </div>
     )
 }
 

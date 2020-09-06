@@ -5,6 +5,20 @@
     top: -17.2rem;
     overflow: hidden;
 
+    .sticky-header-container {
+        position: relative;
+        height: 5rem;
+
+        .header {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+    }
+
     .media-row {
         display: inline-block;
         position: relative;
